@@ -17,6 +17,7 @@ pipeline {
 		stage("Docker Down") {
 			steps {
 				bat "docker-compose down"
+			}
 		}
-	}
-}	
+	}	
+}
