@@ -2,19 +2,19 @@ pipeline {
     // master executor should be set to 0
     agent any
     stages {
-		stage('pull latest image') {
+		stage("pull latest image") {
 			steps {
-			
-				 bat "docker pull varadharajan17/selenium-test"
+				//sh
+				bat "docker pull varadharajan17/selenium-test"
 			}
 		}
-        stage('Docker Up') {
+        stage("Docker Up") {
             steps {
                 //sh
                 bat "docker-compose up -d hub chrome firefox"
             }
         }
-		stage('Run Test') {
+		stage("Run Test") {
             steps {
                 //sh
                 bat "docker-compose up seleniumtest"
