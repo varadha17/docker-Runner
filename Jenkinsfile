@@ -5,7 +5,13 @@ pipeline {
         stage('Docker Up') {
             steps {
                 //sh
-                bat "docker-compose up"
+                bat "docker-compose up -d hub chrome firefox"
+            }
+        }
+		stage('Run Test') {
+            steps {
+                //sh
+                bat "docker-compose up seleniumtest"
             }
         }
         stage('Docker Down') {
