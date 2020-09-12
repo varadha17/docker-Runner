@@ -14,11 +14,11 @@ pipeline {
                 bat "docker-compose up seleniumtest"
             }
         }
-        post {
-            always {
-                archiveArtifacts artifacts: 'output/**'
-                bat "docker-compose down"
-			}
-        }	
 	}
+    post {
+        always {
+            archiveArtifacts artifacts: 'output/**'
+            bat "docker-compose down"
+		}
+    }	
 }	
