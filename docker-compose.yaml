@@ -1,0 +1,32 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:3.141.59-20200525
+    ports:
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome:3.141.59-20200525
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+
+  firefox:
+    image: selenium/node-firefox:3.141.59-20200525
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+      - HUB_PORT=4444
+      
+  seleniumtest:
+    image: varadharajan17/selenium-test
+    depends_on:
+      - chrome
+    environment:
+      - HUB_HOST=hub
+      - MODULE=TestNG.xml
+    volumes:
+      - ./output/selenium-test:/usr/share/seleniumtest/test-output
