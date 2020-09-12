@@ -14,9 +14,9 @@ pipeline {
                 bat "docker-compose up seleniumtest"
             }
         }
-        stage('Docker Down') {
-            steps {
-                //sh
+        post {
+            always {
+                archiveArtifacts artifacts: 'output/**'
                 bat "docker-compose down"
 			}
         }	
