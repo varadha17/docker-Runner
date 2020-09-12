@@ -15,6 +15,7 @@ services:
 
   firefox:
     image: selenium/node-firefox:3.141.59-20200525
+    shm_size: '1gb'
     depends_on:
       - hub
     environment:
@@ -28,5 +29,6 @@ services:
     environment:
       - HUB_HOST=hub
       - MODULE=TestNG.xml
+      - BROWSER=chrome
     volumes:
       - ./output/selenium-test:/usr/share/seleniumtest/test-output
