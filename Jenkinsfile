@@ -2,11 +2,6 @@ pipeline {
     // master executor should be set to 0
     agent any
     stages {
-		stage('Pull Latest Image') {
-			steps {
-				bat "docker pull varadharajan17/selenium-test"
-			}
-		}
         stage('Docker Up') {
             steps {
                 //sh
