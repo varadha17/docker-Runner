@@ -2,14 +2,12 @@ version: "3"
 services:
   hub:
     image: selenium/hub:3.141.59-20200525
-
   chrome:
     image: selenium/node-chrome:3.141.59-20200525
     depends_on:
       - hub
     environment:
       - HUB_HOST=hub
-
   firefox:
     image: selenium/node-firefox:3.141.59-20200525
     shm_size: '1gb'
@@ -17,7 +15,6 @@ services:
       - hub
     environment:
       - HUB_HOST=hub
-      
   seleniumtest:
     image: varadharajan17/selenium-test
     depends_on:
